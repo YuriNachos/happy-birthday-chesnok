@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Чеснок · 3 года · Хроники маленькой таксы</title>
+<meta name="description" content="Хроники Чеснока — тёплый фото-роман о чёрно-подпалой таксе: гурман паштета, гроза плюшевых игрушек, марафонец прогулок, главный соня — и единственный, кто по-настоящему боится маникюра. С Днём Рождения!">
+<meta name="theme-color" content="#1a120b">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --choco:#3a2418;
+    --choco-deep:#241408;
+    --caramel:#c98a4b;
+    --cream:#f6ede1;
+    --dark:#1a120b;
+    --dark-2:#120c07;
+    --gold:#e6b566;
+    --gold-soft:#f0cf98;
+    --ink:#f4e9da;
+    --muted:#b9a68f;
+
+    --maxw:1180px;
+    --gutter:clamp(20px, 5vw, 72px);
+    --radius:22px;
+    --shadow:0 30px 70px -30px rgba(0,0,0,.75), 0 8px 24px -12px rgba(0,0,0,.6);
+    --ring:1px solid rgba(230,181,102,.28);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--dark);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- Ambient background: bokeh + paw prints ---------- */
+  .ambient{
+    position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 82% 8%, rgba(201,138,75,.16), transparent 55%),
+      radial-gradient(90% 70% at 8% 92%, rgba(230,181,102,.10), transparent 55%),
+      linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 60%, var(--choco-deep) 100%);
+  }
+  .orb{position:absolute;border-radius:50%;filter:blur(50px);opacity:.5;mix-blend-mode:screen;}
+  .orb.a{width:46vmax;height:46vmax;left:-14vmax;top:-10vmax;
+    background:radial-gradient(circle, rgba(201,138,75,.42), transparent 68%);animation:drift 26s ease-in-out infinite;}
+  .orb.b{width:38vmax;height:38vmax;right:-12vmax;top:36vh;
+    background:radial-gradient(circle, rgba(230,181,102,.30), transparent 68%);animation:drift 34s ease-in-out infinite reverse;}
+  .orb.c{width:30vmax;height:30vmax;left:24vw;bottom:-12vmax;
+    background:radial-gradient(circle, rgba(140,90,50,.34), transparent 70%);animation:drift 30s ease-in-out infinite;}
+  @keyframes drift{
+    0%,100%{transform:translate3d(0,0,0) scale(1);}
+    50%{transform:translate3d(3vw,-3vh,0) scale(1.08);}
+  }
+  .paw{position:absolute;font-size:26px;opacity:.10;filter:grayscale(.2);animation:float 16s ease-in-out infinite;user-select:none;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(var(--r,0deg));}
+    50%{transform:translateY(-26px) rotate(var(--r,0deg));}
+  }
+
+  /* ---------- Shared layout ---------- */
+  .wrap{position:relative;z-index:1;}
+  section{position:relative;}
+  .container{max-width:var(--maxw);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);}
+
+  .kicker{
+    font-family:'Space Mono',monospace;
+    text-transform:uppercase;letter-spacing:.34em;
+    font-size:clamp(10px,1.4vw,13px);
+    color:var(--caramel);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100svh;display:flex;align-items:flex-end;
+    overflow:hidden;isolation:isolate;
+  }
+  .hero-bg{position:absolute;inset:-6% 0 0 0;z-index:-2;}
+  .hero-bg img{width:100%;height:112%;object-fit:cover;object-position:50% 36%;}
+  .hero-veil{
+    position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(110% 70% at 72% 12%, rgba(26,18,11,.06), transparent 42%),
+      linear-gradient(180deg, rgba(18,12,7,.34) 0%, rgba(18,12,7,.06) 26%, rgba(18,12,7,.10) 46%, rgba(18,12,7,.66) 74%, rgba(18,12,7,.94) 92%, var(--dark) 100%);
+  }
+  .hero-inner{width:100%;padding-bottom:clamp(52px,8vh,104px);padding-top:110px;}
+  .hero .kicker{margin:0 0 .9rem;}
+  .hero h1{
+    margin:.1rem 0 .3rem;
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:900;
+    font-size:clamp(70px,17vw,196px);
+    line-height:.86;
+    letter-spacing:-.02em;
+    color:var(--cream);
+    cursor:pointer;
+    text-shadow:0 2px 30px rgba(0,0,0,.55), 0 0 70px rgba(230,181,102,.32);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .hero h1 .en{
+    display:block;
+    font-size:.2em;font-weight:500;font-style:italic;letter-spacing:.42em;
+    color:var(--gold-soft);text-transform:uppercase;
+    margin-top:.9em;margin-left:.24em;text-shadow:none;
+  }
+  .hero .lead{
+    max-width:34ch;margin:1.3rem 0 0;
+    font-size:clamp(17px,2.4vw,23px);color:var(--ink);font-weight:400;
+    text-shadow:0 1px 18px rgba(0,0,0,.55);
+  }
+  .hero .age-badge{
+    display:inline-flex;align-items:center;gap:.5em;margin-top:1.2rem;
+    padding:.55em 1.1em;border-radius:999px;
+    font-family:'Space Mono',monospace;font-weight:700;
+    font-size:clamp(12px,1.5vw,15px);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--dark-2);background:linear-gradient(95deg,var(--gold-soft),var(--gold));
+    box-shadow:0 12px 34px -14px rgba(230,181,102,.75), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .hero .tap-hint{display:block;margin-top:.7rem;font-size:13px;color:var(--muted);font-weight:500;}
+
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:.5em;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .scroll-hint .dot{
+    width:24px;height:38px;border:1.5px solid rgba(230,181,102,.5);border-radius:14px;position:relative;
+  }
+  .scroll-hint .dot::after{
+    content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;border-radius:3px;
+    background:var(--gold);transform:translateX(-50%);
+    animation:wheel 1.8s ease-in-out infinite;
+  }
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0);}30%{opacity:1;}100%{opacity:0;transform:translate(-50%,14px);}}
+
+  /* ---------- Intro strip ---------- */
+  .intro{padding:clamp(80px,14vh,150px) 0 clamp(30px,6vh,60px);text-align:center;}
+  .intro p{
+    max-width:26ch;margin:0 auto;
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+    font-size:clamp(24px,4.6vw,44px);line-height:1.3;color:var(--gold-soft);
+  }
+  .rule{width:1px;height:64px;margin:34px auto 0;background:linear-gradient(var(--caramel),transparent);}
+
+  /* ---------- Chapters ---------- */
+  .chapter{padding:clamp(56px,10vh,110px) 0;}
+  .chapter-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center;
+  }
+  .chapter.flip .chapter-grid{direction:rtl;}
+  .chapter.flip .chapter-grid > *{direction:ltr;}
+
+  .chapter-text .num{
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:700;
+    font-size:clamp(60px,11vw,120px);line-height:.8;
+    color:transparent;-webkit-text-stroke:1.4px rgba(230,181,102,.42);
+    letter-spacing:-.03em;margin-bottom:.1em;display:block;
+  }
+  .chapter-text .kicker{display:block;margin:0 0 1rem;}
+  .chapter-text h2{
+    font-family:'Playfair Display',serif;font-weight:900;
+    font-size:clamp(34px,6vw,62px);line-height:1.02;letter-spacing:-.015em;
+    margin:0 0 .7rem;color:var(--cream);
+  }
+  .chapter-text h2 em{font-style:italic;color:var(--gold);font-weight:700;}
+  .chapter-text p{margin:0;font-size:clamp(16px,1.9vw,19px);color:#e2d4c1;max-width:46ch;}
+  .chapter-text .tagline{
+    margin-top:1.4rem;display:inline-flex;align-items:center;gap:.6em;
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--caramel);
+  }
+  .chapter-text .tagline::before{content:"";width:34px;height:1px;background:var(--caramel);display:inline-block;}
+
+  .chapter-media{display:flex;flex-direction:column;gap:clamp(18px,3vw,26px);}
+  .frame{
+    position:relative;overflow:hidden;border-radius:var(--radius);
+    border:var(--ring);box-shadow:var(--shadow);background:var(--choco-deep);
+    aspect-ratio:3/4;
+  }
+  .frame.wide{aspect-ratio:4/3;}
+  .frame img{
+    width:100%;height:112%;object-fit:cover;object-position:center;
+    will-change:transform;
+  }
+  .frame::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+    background:linear-gradient(180deg,transparent 60%,rgba(18,12,7,.28));
+    border-radius:var(--radius);
+  }
+  .media-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.4vw,22px);}
+  .media-3up{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,16px);}
+
+  /* ---------- Epilogue ---------- */
+  .epilogue{padding:clamp(90px,16vh,170px) 0 clamp(40px,8vh,80px);text-align:center;}
+  .epilogue .cake{font-size:clamp(30px,7vw,46px);margin-bottom:.4rem;}
+  .epilogue h2{
+    font-family:'Playfair Display',serif;font-weight:900;
+    font-size:clamp(40px,9vw,96px);line-height:.98;letter-spacing:-.02em;
+    margin:0 0 .3rem;color:var(--cream);
+    text-shadow:0 0 60px rgba(230,181,102,.32);
+  }
+  .epilogue h2 em{font-style:italic;color:var(--gold);}
+  .epilogue .final-lead{
+    max-width:46ch;margin:1.6rem auto 0;font-size:clamp(16px,2.1vw,20px);color:#e2d4c1;
+  }
+  .epilogue .final-lead strong{color:var(--gold-soft);font-weight:600;}
+
+  .finale-frame{
+    max-width:520px;margin:clamp(46px,8vh,80px) auto 0;
+    aspect-ratio:3/4;
+  }
+
+  .gallery-head{margin:clamp(70px,12vh,120px) 0 clamp(26px,4vh,40px);text-align:center;}
+  .gallery-head .kicker{display:block;margin-bottom:.7rem;}
+  .gallery-head h3{
+    font-family:'Playfair Display',serif;font-weight:700;font-style:italic;
+    font-size:clamp(26px,5vw,44px);margin:0;color:var(--cream);
+  }
+  .gallery{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,18px);
+  }
+  .gallery figure{
+    margin:0;position:relative;overflow:hidden;border-radius:16px;
+    aspect-ratio:3/4;border:1px solid rgba(230,181,102,.16);
+    box-shadow:0 18px 40px -26px rgba(0,0,0,.8);cursor:pointer;background:var(--choco-deep);
+  }
+  .gallery figure.land{aspect-ratio:4/3;}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1);}
+  .gallery figure::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(18,12,7,.5));
+    opacity:0;transition:opacity .4s ease;
+  }
+  .gallery figure:hover img{transform:scale(1.08);}
+  .gallery figure:hover::after{opacity:1;}
+  .gallery figure:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align:center;padding:clamp(50px,9vh,90px) var(--gutter) clamp(40px,8vh,70px);
+    color:var(--muted);
+  }
+  footer .sig{
+    font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,3.4vw,30px);
+    color:var(--gold-soft);margin-bottom:.3rem;
+  }
+  footer .meta{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;}
+  footer .paws{font-size:18px;opacity:.55;margin-top:1rem;letter-spacing:.5em;}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;display:none;
+    align-items:center;justify-content:center;padding:5vmin;
+    background:rgba(9,6,3,.92);backdrop-filter:blur(8px);
+    cursor:zoom-out;opacity:0;transition:opacity .3s ease;
+  }
+  .lightbox.open{display:flex;opacity:1;}
+  .lightbox img{
+    max-width:min(94vw,900px);max-height:90vh;width:auto;height:auto;
+    border-radius:16px;border:1px solid rgba(230,181,102,.3);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.9);
+  }
+  .lightbox .close{
+    position:absolute;top:22px;right:24px;font-size:28px;line-height:1;color:var(--cream);
+    background:rgba(26,18,11,.5);border:1px solid rgba(230,181,102,.3);border-radius:50%;
+    width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:768px){
+    .chapter-grid{grid-template-columns:1fr;gap:clamp(24px,6vw,34px);}
+    .chapter.flip .chapter-grid{direction:ltr;}
+    .chapter-text{order:0;}
+    .chapter-media{order:1;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .gallery figure.land{grid-column:1 / -1;}
+    .hero-inner{padding-bottom:clamp(84px,15vh,140px);}
+  }
+  @media (max-width:420px){
+    .media-duo{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .orb,.paw,.scroll-hint .dot::after{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Ambient decor -->
+<div class="ambient" aria-hidden="true">
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div class="orb c"></div>
+  <div class="paw" style="left:12%;top:22%;--r:-18deg;">🐾</div>
+  <div class="paw" style="left:82%;top:16%;--r:14deg;animation-delay:-4s;">🐾</div>
+  <div class="paw" style="left:68%;top:48%;--r:-8deg;animation-delay:-8s;">🐾</div>
+  <div class="paw" style="left:22%;top:64%;--r:22deg;animation-delay:-2s;">🐾</div>
+  <div class="paw" style="left:88%;top:78%;--r:-24deg;animation-delay:-6s;">🐾</div>
+  <div class="paw" style="left:8%;top:86%;--r:10deg;animation-delay:-10s;">🐾</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/photos/full/13.jpg" alt="" fetchpriority="high">
+    </div>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <span class="kicker">Фото-роман · издание любви</span>
+      <h1 id="heroName" title="Нажми на имя">Чеснок<span class="en">Garlic · the dachshund</span></h1>
+      <p class="lead">Хроники маленькой таксы, у которой большое сердце, короткие лапы и безупречный нюх на паштет.</p>
+      <span class="age-badge">🎂 Сегодня Чесноку — 3 года</span>
+      <span class="tap-hint">нажми на имя — будет праздник 🎉</span>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>листай</span>
+      <span class="dot"></span>
+    </div>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro">
+    <div class="container reveal">
+      <p>«В каждом доме живёт своя легенда. У нас она весит пять килограммов и обожает паштет.»</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 1 — Паштет ============ -->
+  <section class="chapter" id="ch1">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">01</span>
+          <span class="kicker">Глава первая</span>
+          <h2>Гурман <em>паштета</em></h2>
+          <p>Где-то на кухне тихо приоткрывают банку — и в ту же секунду по паркету уже цокают коготки. Чеснок чует паштет за километр, сквозь закрытые двери и любые уговоры «это не тебе». Сначала — выражение полного восторга, потом — взгляд, от которого тает даже самое твёрдое сердце.</p>
+          <span class="tagline">досье гурмана</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="frame wide">
+            <img class="par" src="assets/photos/full/03.jpg" loading="lazy"
+                 alt="Крупный смешной кадр носа Чеснока, на фоне гостиная с телевизором">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 2 — Игрушки ============ -->
+  <section class="chapter flip" id="ch2">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">02</span>
+          <span class="kicker">Глава вторая</span>
+          <h2>Гроза <em>плюшевых игрушек</em></h2>
+          <p>Плюшевые звери в этом доме живут ярко, но недолго. Новую игрушку Чеснок встречает как старого врага: пара молниеносных движений — и по комнате уже кружит снег из мягкого пуха. Он не злодей. Он просто очень серьёзно относится к своей работе таксы-охотника.</p>
+          <span class="tagline">по данным очевидцев</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="media-duo">
+            <div class="frame">
+              <img class="par" src="assets/photos/full/11.jpg" loading="lazy"
+                   alt="Чеснок лежит кверху пузом между подушками дивана в смешной позе">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/10.jpg" loading="lazy"
+                   alt="Чеснок смешно скалится в улыбке на розовом леопардовом пледе">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 3 — Прогулки ============ -->
+  <section class="chapter" id="ch3">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">03</span>
+          <span class="kicker">Глава третья</span>
+          <h2>Марафонец <em>прогулок</em></h2>
+          <p>Короткие лапы — длинные маршруты. Чеснок готов идти хоть на край района: обнюхать каждый куст, поздороваться с каждым листом, проверить, всё ли на месте. В красной курточке по осенним листьям или кувырком в летней траве — он проживает каждую прогулку так, будто у него ровно одна задача: прожить этот день целиком.</p>
+          <span class="tagline">маршрут дня</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="media-duo">
+            <div class="frame">
+              <img class="par" src="assets/photos/full/04.jpg" loading="lazy"
+                   alt="Чеснок в красной курточке стоит на бревне среди осенних листьев">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/14.jpg" loading="lazy"
+                   alt="Чеснок растянулся на зелёной траве и смотрит в камеру">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 4 — Облизывание ============ -->
+  <section class="chapter flip" id="ch4">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">04</span>
+          <span class="kicker">Глава четвёртая</span>
+          <h2>Чемпион по <em>нежности</em></h2>
+          <p>Любовь Чеснока измеряется в поцелуях — и норма у него всегда перевыполнена. Стоит присесть рядом, как тёплый язык уже сообщает тебе, что ты самый важный человек на свете. Спорить бесполезно, отмахнуться невозможно. Да и, честно говоря, совсем не хочется.</p>
+          <span class="tagline">рекорд не побит</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="media-3up">
+            <div class="frame">
+              <img class="par" src="assets/photos/full/07.jpg" loading="lazy"
+                   alt="Радостный Чеснок улыбается на коленях, видны зубы, рука обнимает его">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/15.jpg" loading="lazy"
+                   alt="Чеснок уютно свернулся на диване и смотрит большими глазами">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/05.jpg" loading="lazy"
+                   alt="Чеснок на сером диване у окна смотрит вбок">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 5 — Соня ============ -->
+  <section class="chapter" id="ch5">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">05</span>
+          <span class="kicker">Глава пятая</span>
+          <h2>Главный <em>соня</em></h2>
+          <p>Если Чеснок чем-то и занят по-настоящему всерьёз — так это сном. Калачиком, вытянувшись в струну, кверху пузом, под пледом или в тёплом солнечном пятне на ковре — поза не важна, важно качество. А лучшее спальное место в доме, разумеется, — рядом с любимыми людьми, желательно под одеялом.</p>
+          <span class="tagline">режим сна: активен</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="frame wide">
+            <img class="par" src="assets/photos/full/09.jpg" loading="lazy"
+                 alt="Чеснок спит вытянувшись на сером ковре в солнечном пятне, рядом ноги хозяина">
+          </div>
+          <div class="media-3up">
+            <div class="frame">
+              <img class="par" src="assets/photos/full/06.jpg" loading="lazy"
+                   alt="Чеснок спит на диване, укрытый пледом, глаза закрыты">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/08.jpg" loading="lazy"
+                   alt="Чеснок спит калачиком на сером диване">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/16.jpg" loading="lazy"
+                   alt="Чеснок спит калачиком на тёмном пледе">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 6 — Пловец ============ -->
+  <section class="chapter flip" id="ch6">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">06</span>
+          <span class="kicker">Глава шестая</span>
+          <h2>Пловец <em>в фонтане</em></h2>
+          <p>Когда лето раскаляет асфальт, Чеснок знает единственно верное решение — вода. Фонтан, озеро, любая прохладная лужа мгновенно становятся личным бассейном. В оранжевом спасжилете, на руках или вплавь — этот маленький пёс не боится большой воды. Такса, которая живёт на полную.</p>
+          <span class="tagline">сезон открыт</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="frame">
+            <img class="par" src="assets/photos/full/01.jpg" loading="lazy"
+                 alt="Чеснок в оранжевом спасжилете в каноэ на озере, летняя вода">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 7 — Маникюр ============ -->
+  <section class="chapter flip" id="ch7">
+    <div class="container">
+      <div class="chapter-grid">
+        <div class="chapter-text reveal">
+          <span class="num">07</span>
+          <span class="kicker">Глава седьмая</span>
+          <h2>Единственный <em>страх</em></h2>
+          <p>Гроза плюшевых игрушек, покоритель фонтанов, бесстрашный путешественник — и всё это рушится в одну секунду, стоит достать когтерез. Поход на маникюр Чеснок считает личной катастрофой: намордник, круглые глаза, дрожащие лапки и взгляд «за что?!». Единственный настоящий страх большого сердца в маленьком теле — и мы за это любим его только сильнее.</p>
+          <span class="tagline">категория: не любит</span>
+        </div>
+        <div class="chapter-media reveal">
+          <div class="media-duo">
+            <div class="frame">
+              <img class="par" src="assets/photos/full/17.jpg" loading="lazy"
+                   alt="Чеснок в наморднике на приёме, испуганный взгляд, его придерживают на руках">
+            </div>
+            <div class="frame">
+              <img class="par" src="assets/photos/full/12.jpg" loading="lazy"
+                   alt="Чеснок с достоинством сидит у сервированного стола со свечами">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EPILOGUE ============ -->
+  <section class="epilogue" id="epilogue">
+    <div class="container">
+      <div class="reveal">
+        <div class="cake" aria-hidden="true">🎂</div>
+        <span class="kicker">Сегодня · три года</span>
+        <h2>С Днём Рождения,<br><em>Чеснок!</em></h2>
+        <p class="final-lead">
+          Сегодня тебе целых три года — а кажется, будто ты всегда был этим домом и его главным сердцем.
+          Ты <strong>гурман</strong>, охотник на плюшевых зверей, <strong>марафонец прогулок</strong>,
+          чемпион по нежности, главный соня и бесстрашный пловец — и лишь когтерез знает твою слабую сторону.
+          Спасибо, что наполняешь каждый день теплом, шерстью на диване и той самой безусловной любовью,
+          которой умеют только собаки. Живи долго, ешь много паштета и плыви по жизни так же смело, как по своему фонтану.
+        </p>
+      </div>
+
+      <div class="frame finale-frame reveal">
+        <img class="par" src="assets/photos/full/02.jpg" loading="lazy"
+             alt="Чеснок лежит на коленях на диване в тёплом солнечном свете, ошейник с адресником">
+      </div>
+
+      <div class="gallery-head reveal">
+        <span class="kicker">вся хроника целиком</span>
+        <h3>Семнадцать кадров одной большой любви</h3>
+      </div>
+
+      <div class="gallery reveal" id="gallery">
+        <figure data-full="assets/photos/full/13.jpg"><img src="assets/photos/thumb/13.jpg" loading="lazy" alt="Чеснок сидит на улице у газона, элегантный профиль в кожаном ошейнике"></figure>
+        <figure data-full="assets/photos/full/01.jpg"><img src="assets/photos/thumb/01.jpg" loading="lazy" alt="Чеснок в спасжилете в каноэ на озере"></figure>
+        <figure data-full="assets/photos/full/02.jpg"><img src="assets/photos/thumb/02.jpg" loading="lazy" alt="Чеснок на коленях в тёплом солнечном свете"></figure>
+        <figure class="land" data-full="assets/photos/full/03.jpg"><img src="assets/photos/thumb/03.jpg" loading="lazy" alt="Смешной крупный кадр носа Чеснока"></figure>
+        <figure data-full="assets/photos/full/04.jpg"><img src="assets/photos/thumb/04.jpg" loading="lazy" alt="Чеснок в красной курточке на бревне в осенних листьях"></figure>
+        <figure data-full="assets/photos/full/14.jpg"><img src="assets/photos/thumb/14.jpg" loading="lazy" alt="Чеснок растянулся на зелёной траве"></figure>
+        <figure data-full="assets/photos/full/05.jpg"><img src="assets/photos/thumb/05.jpg" loading="lazy" alt="Чеснок на сером диване у окна"></figure>
+        <figure data-full="assets/photos/full/07.jpg"><img src="assets/photos/thumb/07.jpg" loading="lazy" alt="Радостный Чеснок улыбается на коленях"></figure>
+        <figure data-full="assets/photos/full/15.jpg"><img src="assets/photos/thumb/15.jpg" loading="lazy" alt="Чеснок уютно свернулся на диване с большими глазами"></figure>
+        <figure data-full="assets/photos/full/06.jpg"><img src="assets/photos/thumb/06.jpg" loading="lazy" alt="Чеснок спит под пледом на диване"></figure>
+        <figure data-full="assets/photos/full/08.jpg"><img src="assets/photos/thumb/08.jpg" loading="lazy" alt="Чеснок спит калачиком на диване"></figure>
+        <figure data-full="assets/photos/full/16.jpg"><img src="assets/photos/thumb/16.jpg" loading="lazy" alt="Чеснок спит калачиком на тёмном пледе"></figure>
+        <figure data-full="assets/photos/full/09.jpg"><img src="assets/photos/thumb/09.jpg" loading="lazy" alt="Чеснок спит на ковре в солнечном пятне"></figure>
+        <figure data-full="assets/photos/full/10.jpg"><img src="assets/photos/thumb/10.jpg" loading="lazy" alt="Чеснок скалится в улыбке на розовом пледе"></figure>
+        <figure data-full="assets/photos/full/11.jpg"><img src="assets/photos/thumb/11.jpg" loading="lazy" alt="Чеснок кверху пузом между подушками дивана"></figure>
+        <figure data-full="assets/photos/full/12.jpg"><img src="assets/photos/thumb/12.jpg" loading="lazy" alt="Чеснок у сервированного стола со свечами"></figure>
+        <figure data-full="assets/photos/full/17.jpg"><img src="assets/photos/thumb/17.jpg" loading="lazy" alt="Чеснок в наморднике на приёме, испуганный"></figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="sig">С любовью — к самому лучшему псу на свете.</div>
+    <div class="meta">Хроники Чеснока · Garlic the dachshund</div>
+    <div class="paws" aria-hidden="true">🐾 🐾 🐾</div>
+  </footer>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="close" id="lbClose" aria-label="Закрыть">×</div>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- ============ CDN ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Confetti ---------- */
+  function burst(opts){
+    if(!window.confetti) return;
+    var base = {
+      colors:['#c98a4b','#e6b566','#f6ede1','#3a2418','#f0cf98'],
+      disableForReducedMotion:true
+    };
+    var o = Object.assign({}, base, opts||{});
+    window.confetti(o);
+  }
+  function celebrate(){
+    if(!window.confetti || reduce) return;
+    burst({particleCount:70, spread:70, origin:{y:.62}, startVelocity:42});
+    setTimeout(function(){ burst({particleCount:50, angle:60, spread:60, origin:{x:0, y:.7}}); }, 160);
+    setTimeout(function(){ burst({particleCount:50, angle:120, spread:60, origin:{x:1, y:.7}}); }, 300);
+  }
+
+  // Confetti on load
+  if(window.confetti && !reduce){
+    if(document.readyState === 'complete'){ setTimeout(celebrate, 500); }
+    else { window.addEventListener('load', function(){ setTimeout(celebrate, 500); }); }
+  }
+
+  // Confetti on name click
+  var heroName = document.getElementById('heroName');
+  if(heroName){
+    heroName.addEventListener('click', function(){
+      celebrate();
+      if(window.gsap && !reduce){
+        window.gsap.fromTo(heroName, {scale:1}, {scale:1.04, duration:.16, yoyo:true, repeat:1, ease:'power2.out'});
+      }
+    });
+  }
+
+  /* ---------- GSAP: reveal + parallax ---------- */
+  if(window.gsap){
+    var gsap = window.gsap;
+    if(window.ScrollTrigger){ gsap.registerPlugin(window.ScrollTrigger); }
+
+    if(reduce || !window.ScrollTrigger){
+      // Ensure everything is simply visible; nothing to animate.
+      gsap.set('.reveal', {clearProps:'all'});
+    } else {
+      // Reveal blocks
+      gsap.utils.toArray('.reveal').forEach(function(el){
+        gsap.from(el, {
+          opacity:0, y:44, duration:1, ease:'power3.out',
+          scrollTrigger:{ trigger:el, start:'top 82%', once:true }
+        });
+      });
+
+      // Parallax on framed images
+      gsap.utils.toArray('.frame').forEach(function(frame){
+        var img = frame.querySelector('.par');
+        if(!img) return;
+        gsap.fromTo(img, {yPercent:-6}, {
+          yPercent:6, ease:'none',
+          scrollTrigger:{ trigger:frame, start:'top bottom', end:'bottom top', scrub:true }
+        });
+      });
+
+      // Hero background subtle drift
+      var heroBg = document.querySelector('.hero-bg img');
+      if(heroBg){
+        gsap.to(heroBg, {
+          yPercent:10, scale:1.06, ease:'none',
+          scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true }
+        });
+      }
+    }
+  }
+
+  /* ---------- Lightbox ---------- */
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbClose = document.getElementById('lbClose');
+  var gallery = document.getElementById('gallery');
+
+  function openLb(src, alt){
+    if(!lb || !lbImg) return;
+    lbImg.src = src; lbImg.alt = alt || '';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+  }
+  function closeLb(){
+    if(!lb) return;
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+    setTimeout(function(){ if(!lb.classList.contains('open')) lbImg.src=''; }, 320);
+  }
+  if(gallery){
+    gallery.addEventListener('click', function(e){
+      var fig = e.target.closest('figure[data-full]');
+      if(!fig) return;
+      var img = fig.querySelector('img');
+      openLb(fig.getAttribute('data-full'), img ? img.alt : '');
+    });
+    // keyboard access
+    gallery.querySelectorAll('figure[data-full]').forEach(function(fig){
+      fig.setAttribute('tabindex','0');
+      fig.setAttribute('role','button');
+      fig.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          var img = fig.querySelector('img');
+          openLb(fig.getAttribute('data-full'), img ? img.alt : '');
+        }
+      });
+    });
+  }
+  if(lb){ lb.addEventListener('click', closeLb); }
+  if(lbClose){ lbClose.addEventListener('click', function(e){ e.stopPropagation(); closeLb(); }); }
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+})();
+</script>
+</body>
+</html>
